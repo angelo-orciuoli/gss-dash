@@ -8,10 +8,9 @@ import plotly.figure_factory as ff
 import ssl
 import urllib.request
 
-# Fix SSL certificate issue
 ssl._create_default_https_context = ssl._create_unverified_context
 
-# Page config
+# Page layout
 st.set_page_config(
     page_title="GSS 2018 Dashboard",
     page_icon="📊",
@@ -21,21 +20,9 @@ st.set_page_config(
 # Load and clean data
 @st.cache_data
 def load_data():
-    try:
-        gss = pd.read_csv("https://github.com/jkropko/DS-6001/raw/master/localdata/gss2018.csv",
-                         encoding='cp1252', na_values=['IAP','IAP,DK,NA,uncodeable', 'NOT SURE',
-                                                       'DK', 'IAP, DK, NA, uncodeable', '.a', "CAN'T CHOOSE"])
-    except Exception as e:
-        st.error(f"Error loading data: {e}")
-        st.info("Trying alternative method...")
-        # Alternative: Download the file locally first
-        import requests
-        response = requests.get("https://github.com/jkropko/DS-6001/raw/master/localdata/gss2018.csv", verify=False)
-        with open("gss2018.csv", "wb") as f:
-            f.write(response.content)
-        gss = pd.read_csv("gss2018.csv", encoding='cp1252', 
-                         na_values=['IAP','IAP,DK,NA,uncodeable', 'NOT SURE',
-                                   'DK', 'IAP, DK, NA, uncodeable', '.a', "CAN'T CHOOSE"])
+    gss = pd.read_csv("https://github.com/jkropko/DS-6001/raw/master/localdata/gss2018.csv",
+                     encoding='cp1252', na_values=['IAP','IAP,DK,NA,uncodeable', 'NOT SURE',
+                                                   'DK', 'IAP, DK, NA, uncodeable', '.a', "CAN'T CHOOSE"])
     
     mycols = ['id', 'wtss', 'sex', 'educ', 'region', 'age', 'coninc',
               'prestg10', 'mapres10', 'papres10', 'sei10', 'satjob',

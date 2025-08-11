@@ -24,10 +24,7 @@ def load_data():
                      encoding='cp1252', na_values=['IAP','IAP,DK,NA,uncodeable', 'NOT SURE',
                                                    'DK', 'IAP, DK, NA, uncodeable', '.a', "CAN'T CHOOSE"])
     
-    mycols = ['id', 'wtss', 'sex', 'educ', 'region', 'age', 'coninc',
-              'prestg10', 'mapres10', 'papres10', 'sei10', 'satjob',
-              'fechld', 'fefam', 'fepol', 'fepresch', 'meovrwrk'] 
-    gss_clean = gss[mycols]
+    gss_clean = gss[['id', 'wtss', 'sex', 'educ', 'region', 'age', 'coninc', 'prestg10', 'mapres10', 'papres10', 'sei10', 'satjob', 'fechld', 'fefam', 'fepol', 'fepresch', 'meovrwrk']]
     gss_clean = gss_clean.rename({'wtss':'weight', 
                                   'educ':'education', 
                                   'coninc':'income', 

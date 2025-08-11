@@ -56,6 +56,7 @@ st.sidebar.markdown("---")
 
 # Navigation
 page = st.sidebar.radio(
+    "   ",
     ["Overview", "Summary Table", "Breadwinner Barplot", 
      "Prestige vs Income", "Boxplots by Gender", "Income by Prestige Range"]
 )

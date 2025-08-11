@@ -226,4 +226,4 @@ elif page == "Income by Prestige Range":
 
 # Footer
 st.sidebar.markdown("---")
-st.sidebar.markdown("*Tip: Use the menu above to switch views.*")
+st.sidebar.markdown("*Tip: Use the menu above to view different visualizations.*")
